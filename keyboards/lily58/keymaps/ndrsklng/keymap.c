@@ -22,11 +22,21 @@ enum layer_number {
 #define SE_PIPE LALT(KC_7)         // pipe
 #define SE_AT LALT(KC_2)           // @
 
+#define SE_PLUS LSFT(KC_EQL)   // Plus (+)
+#define SE_MINUS KC_SLSH        // Minus (-)
+#define SE_ASTR KC_PIPE   // Asterisk (*)
+#define SE_SLASH LSFT(KC_7)        // Slash (/)
+#define SE_EQUL LSFT(KC_0)          // Equal (=)
+#define SE_QUES LSFT(KC_MINS)   // Question mark (?)
+
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
+
 /* QWERTY
+ *  -----------------------------------------                      -----------------------------------------
+ *        |   !  |   "  |   #  |   €  |   %                       |   &  |   /  |   (  |   )  |   =  |   >
  * ,-----------------------------------------.                    ,-----------------------------------------.
- * | ESC  |   1  |   2  |   3  |   4  |   5  |                    |   6  |   7  |   8  |   9  |   0  |  `   |
+ * | ESC  |   1  |   2  |   3  |   4  |   5  |                    |   6  |   7  |   8  |   9  |   0  |  <   |
  * |------+------+------+------+------+------|                    |------+------+------+------+------+------|
  * | Tab  |   Q  |   W  |   E  |   R  |   T  |                    |   Y  |   U  |   I  |   O  |   P  |  \   |
  * |------+------+------+------+------+------|                    |------+------+------+------+------+------|
@@ -46,15 +56,16 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   KC_LSFT,  KC_Z,   KC_X,    KC_C,    KC_V,    KC_B, KC_LBRC,  KC_RBRC,  KC_N,    KC_M,    KC_COMM, KC_DOT,  KC_SLSH, KC_RSFT,
                         KC_LALT, KC_LGUI, MO(_LOWER), KC_SPC, KC_ENT, MO(_RAISE), KC_BSPC, KC_RGUI
 ),
+
 /* LOWER
  * ,-----------------------------------------.                    ,-----------------------------------------.
  * |  F1  |  F2  |  F3  |  F4  |  F5  |  F6  |                    |  F7  |  F8  |  F9  | F10  | F11  | F12  |
  * |------+------+------+------+------+------|                    |------+------+------+------+------+------|
- * |      |      |      |      |      |      |                    |      |      |      |      |  å   |      |
+ * |      |      |      |      |      |      |                    |   =  |   ?  |      |      |  å   |      |
  * |------+------+------+------+------+------|                    |------+------+------+------+------+------|
- * |   `  |   !  |   @  |   #  |   $  |   %  |-------.    ,-------|   ^  |   &  |   *  |   ö  |   ä  |   ~  |
+ * |   `  |   !  |   @  |   #  |   $  |   %  |-------.    ,-------|   +  |   -  |   *  |   ö  |   ä  |   ~  |
  * |------+------+------+------+------+------|   [   |    |    ]  |------+------+------+------+------+------|
- * |      |      |      |      |      |      |-------|    |-------|      |   _  |   +  |   {  |   }  |   |  |
+ * |      |      |      |      |      |      |-------|    |-------|   *  |   /  |   +  |   {  |   }  |   |  |
  * `-----------------------------------------/       /     \      \-----------------------------------------'
  *                   | LAlt | LGUI |LOWER | /Space  /       \Enter \  |RAISE |BackSP| RGUI |
  *                   |      |      |      |/       /         \      \ |      |      |      |
@@ -62,9 +73,9 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  */
 [_LOWER] = LAYOUT(
   KC_F1,   KC_F2,   KC_F3,   KC_F4,   KC_F5,   KC_F6,                     KC_F7,   KC_F8,   KC_F9,   KC_F10,  KC_F11,  KC_F12,
-  _______, _______, _______, _______, _______, _______,                   _______, _______, _______,_______,  SE_AA, _______,
-  KC_GRV, KC_EXLM, KC_AT,   KC_HASH, KC_DLR,  KC_PERC,                    KC_CIRC, KC_AMPR, KC_ASTR, SE_OE,   SE_AE, KC_TILD,
-  _______, _______, _______, _______, _______, _______, _______, _______, XXXXXXX, KC_UNDS, KC_PLUS, KC_LCBR, KC_RCBR, KC_PIPE,
+  _______, _______, _______, _______, _______, _______,                   SE_QUES, SE_EQUL,  _______,_______,  SE_AA, _______,
+  KC_GRV, KC_EXLM, KC_AT,   KC_HASH, KC_DLR,  KC_PERC,                    SE_PLUS, SE_MINUS, KC_ASTR, SE_OE,   SE_AE, KC_TILD,
+  _______, _______, _______, _______, _______, _______, _______, _______, SE_ASTR, SE_SLASH, KC_PLUS, KC_LCBR, KC_RCBR, KC_PIPE,
                              _______, _______, _______, _______, _______,  _______, _______, _______
 ),
 /* RAISE
